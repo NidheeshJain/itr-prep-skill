@@ -1,4 +1,4 @@
-# itr-filing — Claude Code skill for Indian Income Tax Returns (ITR-1/2/3/4)
+# itr-prep-skill — Claude Code skill for Indian Income Tax Returns (ITR-1/2/3/4)
 
 A Claude Code skill that takes a user from raw documents (Form 16, AIS, Form 26AS, broker Tax P&L,
 payslips) to a fully reconciled, schedule-by-schedule computation and a **portal-ready data-pack JSON**
@@ -21,7 +21,7 @@ recording them in a `rules_verification` block in the output.
 ## Install
 
 ```bash
-git clone https://github.com/NidheeshJain/itr-1-3-skill.git ~/.claude/skills/itr-filing
+git clone https://github.com/NidheeshJain/itr-prep-skill.git ~/.claude/skills/itr-prep-skill
 pip install pycryptodome   # for scripts/decrypt_ais.py (AIS JSON decryption)
 ```
 

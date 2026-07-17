@@ -1,5 +1,5 @@
 ---
-name: itr-filing
+name: itr-prep-skill
 description: >
   End-to-end assistant for filing Indian Income Tax Returns (ITR-1/2/3/4) for any assessment year.
   Takes a user from raw documents (Form 16, AIS, Form 26AS, broker tax P&L, payslips, bank statements)
