@@ -38,8 +38,23 @@ turnover is in thousands.
   Presumptive filers must supply the no-books block figures (Part A-BS item 6: debtors, creditors,
   stock, cash balance — a positive cash balance, e.g. retained net profit, with the rest 0 is fine);
   include them in the data pack, since the portal blocks upload if the block is empty.
+- **44AE** (goods carriages, ≤10 vehicles): presumptive income per vehicle per month —
+  heavy vehicles (>12MT gross) ₹1,000 per ton of gross vehicle weight/month; others ₹7,500/month
+  (verify current figures); part of a month counts as full. Ownership months, not usage. More than
+  10 vehicles at any time in the year → 44AE unavailable.
 - Presumptive = no books, no expense tracking, but you CANNOT declare a loss under it. A loss-making
   F&O trader should use normal provisions (ITR-3), not presumptive.
+
+### ITR-4 specifics (presumptive filers)
+
+- **GST disclosure**: ITR-4 asks for GSTIN and turnover as reported under GST. If the user is
+  GST-registered, get these and make sure the ITR turnover ≥/reconciles with GST turnover — a mismatch
+  is a common notice trigger. Include both figures in the data pack.
+- **Financial particulars**: ITR-4 requires the same no-books block (debtors, creditors, stock, cash)
+  described above — supply real figures in the data pack.
+- ITR-4 remains barred by: capital gains beyond the permitted small-LTCG sliver, foreign assets,
+  director/unlisted shares, >1 house property, carried-forward losses, agri > ₹5,000 (see reference 01).
+  Any of these → the same presumptive income moves into ITR-3 instead.
 
 ## Expenses (normal provisions)
 
