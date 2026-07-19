@@ -35,3 +35,8 @@ pip install pycryptodome   # for scripts/decrypt_ais.py (AIS JSON decryption)
 
 This is a careful preparer, not a chartered accountant. Users remain legally responsible for filed
 figures. Audit cases, HUF/deceased filings, and contested notices are explicitly escalated to a CA.
+
+## Contributing
+
+Field reports from real filings are the most valuable contribution — see [CONTRIBUTING.md](CONTRIBUTING.md).
+Licensed under [MIT](LICENSE).
