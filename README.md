@@ -36,6 +36,34 @@ pip install pycryptodome   # for scripts/decrypt_ais.py (AIS JSON decryption)
 This is a careful preparer, not a chartered accountant. Users remain legally responsible for filed
 figures. Audit cases, HUF/deceased filings, and contested notices are explicitly escalated to a CA.
 
+## Handing off to the filling agent
+
+The data pack is designed to be consumed by a second agent with browser access (e.g. Claude in Chrome
+or a cowork session). Attach the data-pack JSON (and optionally the raw documents for spot-checks) with
+a prompt like:
+
+```text
+I need you to fill my Indian Income Tax Return on https://eportal.incometax.gov.in using the attached
+data pack: ITR_datapack_<PAN>_AY<year>.json. It was prepared by another agent after full reconciliation
+of my Form 16s, AIS, 26AS and broker statements — treat its figures as authoritative and fill each
+schedule with these EXACT numbers. The JSON's comments explain where each figure goes.
+
+Rules:
+1. I will log in myself — never ask for or handle my password or OTP.
+2. Work schedule by schedule in the portal's Return Summary; after editing any schedule, re-confirm
+   downstream schedules (the portal silently un-confirms them).
+3. The portal pre-fills from AIS — where pre-fill disagrees with the data pack, the data pack wins;
+   tell me about any disagreement instead of silently accepting either.
+4. Resolve every item in `verification_checklist_before_submit` and every TODO/VERIFY flag with me
+   before proceeding.
+5. When validation shows 0 errors, STOP. Show me the final computed tax vs the pack's
+   `tax_computation` and `balance_and_interest` figures. I will make the payment, click Submit,
+   and e-verify myself.
+```
+
+If anything in the pack looks wrong mid-fill, the filling agent should stop and flag it — the pack
+carries source attribution for every figure so discrepancies can be traced.
+
 ## Contributing
 
 Field reports from real filings are the most valuable contribution — see [CONTRIBUTING.md](CONTRIBUTING.md).
