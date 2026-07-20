@@ -16,8 +16,12 @@ Batch these into 2–3 AskUserQuestion rounds. Round 1 (always):
 2. **Job changes**: same employer all year / changed jobs / multiple simultaneous employers / not salaried.
    (Job change = the single most common cause of tax shortfall — each employer applies slabs independently.)
 3. **What they want**: full filing help / just form+regime / compute tax / verify a drafted return / prep checklist.
-4. **Age band** (from DOB if a document has it): 60+/80+ changes old-regime slabs, 80TTB, 80D limits,
-   and the advance-tax exemption (senior with no business income).
+
+**Age — derive, don't ask.** DOB matters (60+/80+ changes old-regime slabs, 80TTB, 80D limits, and the
+advance-tax exemption for seniors with no business income), but get it from documents during Phase 2:
+AIS Part A (General Information) states DOB, and the AIS decryption step already required the user to
+supply it — reuse that. Only ask the user directly if, after document collection, no DOB-bearing
+source is available (e.g., they provided only Form 16s and broker statements, which don't carry DOB).
 
 Round 2 (conditional on round 1):
 
