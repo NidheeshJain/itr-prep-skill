@@ -23,6 +23,7 @@ recording them in a `rules_verification` block in the output.
 ```bash
 git clone https://github.com/NidheeshJain/itr-prep-skill.git ~/.claude/skills/itr-prep-skill
 pip install pycryptodome   # for scripts/decrypt_ais.py (AIS JSON decryption)
+Claude chrome agent for filing
 ```
 
 ## Layout
@@ -39,8 +40,8 @@ figures. Audit cases, HUF/deceased filings, and contested notices are explicitly
 ## Handing off to the filling agent
 
 The data pack is designed to be consumed by a second agent with browser access (e.g. Claude in Chrome
-or a cowork session). Attach the data-pack JSON (and optionally the raw documents for spot-checks) with
-a prompt like:
+or a cowork session). Install Claude chrome extension. Attach the data-pack JSON (and optionally the 
+raw documents for spot-checks) with a prompt like:
 
 ```text
 I need you to fill my Indian Income Tax Return on https://eportal.incometax.gov.in using the attached
