@@ -50,6 +50,13 @@ Conventions: amounts INR integers (paise only where source has them), dates YYYY
 traceable to the Phase 2/3 ledger, `TODO`/`VERIFY` prefixes for anything only the user can confirm.
 The final chat message must list all open TODO/VERIFY items — the pack is not "done" while any remain.
 
+**Validate the JSON parses after every single edit, not just at the end.** These packs grow to
+hundreds of lines with deep nesting; one misplaced brace from a mid-file insertion breaks the whole
+file silently until something tries to parse it. Run
+`python3 -c "import json; json.load(open(path))"` (or equivalent) immediately after each write —
+catching a syntax error right after the edit that caused it is far cheaper than debugging it later
+once several more edits have piled on top.
+
 ## Deliverable B — verifying an official ITR JSON (portal/utility export)
 
 The portal's JSON is `{"ITR": {"ITR3": {...schedules...}}}` (or ITR1/2/4). Schedule names:
@@ -76,6 +83,25 @@ Verification procedure:
 5. When two JSONs exist (user edited something), flat-diff them (`old vs new leaves`) and report what
    changed, whether it was needed, and the ₹ impact — users often make cosmetic edits they think are
    substantive and vice versa.
+
+**Reconciliation technique — decompose the gap, don't re-derive from scratch.** When the user reports
+"the refund/payable I see doesn't match what you computed," the fast path is: take the observed ₹
+delta and explain it as a small number of named, individually-verifiable components (a missing
+schedule entry, an unclaimed credit, a relief pending a prerequisite filing) rather than recomputing
+the whole return from zero. Confirm the components sum to (approximately) the observed gap before
+presenting the explanation — that sum check is what turns a guess into a verified finding.
+
+## Deliverable C — final pre-submission diff against the portal's own generated JSON (required)
+
+After the user has entered everything on the portal and it validates cleanly (no schedule errors),
+most portal/utility flows generate a JSON at that point, before final submission. **Ask for this file
+as a standard closing step, every time — don't wait to be asked.** It is the only artifact that
+reflects exactly what the department will actually receive, including anything the portal itself
+silently defaulted or omitted (a credit schedule left empty despite the underlying figure existing in
+AIS/26AS; a relief not yet reflected pending a prerequisite filing like Form 67).
+
+Run the same procedure as Deliverable B against it. Frame this to the user as a routine last check
+before an action that's hard to walk back cleanly, not as a sign something is expected to be wrong.
 
 ## Handing off to a browser assistant
 
