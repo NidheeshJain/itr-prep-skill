@@ -27,7 +27,24 @@ Required top-level sections (include only those relevant to the profile, but nev
                  "totals (single standard deduction!)" },
   "house_property": {},
   "capital_gains": { "per bucket: scripwise rows (ISIN, qty, cost, consideration, dates), intra-CG set-off,
-                      quarterwise gains, net + carry-forward" },
+                      quarterwise gains, net + carry-forward",
+                      "csv_ready_112A": "one entry per scrip with PRE-DERIVED per-unit values so the
+                       filling agent can populate the portal's 112A CSV template mechanically: ISIN,
+                       scrip name, security type, quantity, sale price PER UNIT, cost PER UNIT,
+                       FMV-per-unit as on 31-Jan-2018 (pre-2018 holdings only), acquisition date and
+                       transfer date as raw dates (the agent applies whatever cliff codes the current
+                       template uses), per-scrip transfer expenditure, fmv_source per pre-2018 scrip
+                       (broker column / 31-Jan-2018 exchange high / AMFI NAV); rows with unknown
+                       acquisition date or cost carry a VERIFY flag naming what the user must supply",
+                      "csv_generation_notes": "instructions embedded for the filling agent: download
+                       the portal's own CSV template for THIS AY and map into its exact headers (they
+                       gain columns when law changes — never reuse a remembered layout); dates
+                       DD/MM/YYYY; amounts in plain rupees; ISIN exact 12 chars; don't edit headers;
+                       no trailing blank rows; identical BE/AE codes mean DIFFERENT cliffs in
+                       different columns (acquisition vs transfer) — read each column's help text;
+                       if the upload rejects negative/loss rows, fall back to manual Add-Another rows
+                       or direct net entry; if any field is missing here or needs reconciling at
+                       runtime, pull it from the attached broker tax report" },
   "business_fno": { "classification, turnover, audit determination + reasoning, gross P&L,
                      itemized expenses, net, nature-of-business code" },
   "other_sources": { "interest per account, dividend (quarterwise), refund interest 244A, family pension…" },

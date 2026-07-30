@@ -75,6 +75,9 @@ Rules:
 5. When validation shows 0 errors, STOP. Show me the final computed tax vs the pack's
    `tax_computation` and `balance_and_interest` figures. I will make the payment, click Submit,
    and e-verify myself.
+6. For Schedule 112A, don't type rows manually: use the portal's "Download CSV Template" and fill it
+   from the pack's `csv_ready_112A` block (follow `csv_generation_notes`). If any field is missing or
+   you need to reconcile a figure at runtime, use the attached broker tax report.
 ```
 
 If anything in the pack looks wrong mid-fill, the filling agent should stop and flag it — the pack

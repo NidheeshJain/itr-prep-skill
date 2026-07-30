@@ -30,7 +30,30 @@ Any VDA transfer bars ITR-1/4.
 - Corporate actions: splits/bonus adjust cost basis (bonus shares = 0 cost, holding from allotment).
 - Quarter-wise breakup of gains is required in the return (for 234C) — get sale dates from the
   tradewise/scripwise sheet.
+
+### Scripwise 112A detail (feeds `csv_ready_112A`)
+
 - ITR requires scripwise reporting for 112A (ISIN, name, cost, sale) — the broker Tax P&L has it.
+- Capture scripwise rows **per unit** (sale price, cost, FMV each ÷ quantity) with raw acquisition and
+  transfer dates, into the data pack's `csv_ready_112A` block (reference 10): the portal's 112A screen
+  takes a CSV upload built from its own downloadable template, and per-unit values + both dates are
+  what every template revision asks for. The filling agent maps these into the current AY's template;
+  it falls back to the broker tax report for anything missing.
+- **Grandfathering formula** (pre-31-Jan-2018 holdings): deemed cost = higher of (actual cost,
+  lower of (FMV on 31-Jan-2018, sale price)). Apply it when computing the gain in Phase 4 — don't
+  take FMV as cost outright: when FMV exceeds the sale price, the deemed cost is capped at sale
+  price (gain 0, not a manufactured loss). The portal template auto-computes this from raw inputs.
+- **FMV source**: broker/CAMS-KFintech tax reports usually carry the grandfathered value; if absent,
+  use the scrip's highest traded price on 31-Jan-2018 (NSE/BSE) or the fund's NAV on that date
+  (AMFI), and record the per-scrip source in the pack.
+- **112A eligibility isn't automatic**: shares need STT on acquisition AND sale (equity MF: sale
+  only) — but gifts, off-market transfers, IPO/bonus/rights/ESOP allotments are carved out by
+  notification (verify). A holding acquired without STT and outside the carve-outs falls under
+  **Sec 112, not 112A** — different rate, no ₹1.25L exemption.
+- **Missing acquisition dates** (demat transfers-in, gifts, opening balances): the broker report
+  often lacks them, so the fallback fails too — mark the row VERIFY and get the date/cost from
+  contract notes, the previous broker, or the CAS. Without the date you can't even set the
+  acquisition-cliff code.
 
 ## Property LTCG exemptions (Sec 54 family) — verify current rules before relying
 
