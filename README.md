@@ -22,9 +22,24 @@ recording them in a `rules_verification` block in the output.
 
 ```bash
 git clone https://github.com/NidheeshJain/itr-prep-skill.git ~/.claude/skills/itr-prep-skill
-pip install pycryptodome   # for scripts/decrypt_ais.py (AIS JSON decryption)
-Claude chrome agent for filing
+pip install pycryptodome openpyxl   # AIS JSON decryption + broker xlsx parsing
 ```
+
+For the downstream filling step, install the Claude Chrome extension (see "Handing off" below).
+
+## Running
+
+Start Claude Code in the folder containing your documents and ask it to prepare your ITR. For the
+smoothest run, launch with:
+
+```bash
+claude --dangerously-skip-permissions
+```
+
+so document parsing, dependency installs, and rate-verification web lookups don't pause for approval
+at every step. The skill only reads your documents, verifies rates online, and writes the data pack
+locally — but the flag disables all permission prompts session-wide, so skip it if you prefer to
+approve each action (everything still works, just with more prompts).
 
 ## Layout
 

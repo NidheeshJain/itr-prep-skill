@@ -4,7 +4,7 @@
 
 | Profile element | Documents |
 |---|---|
-| Always | PAN, Aadhaar (linked), portal login, ALL bank accounts + IFSC, last year's ITR (if any) |
+| Always | PAN, Aadhaar (linked), portal access (credentials stay with the user — never handled by the agent), ALL bank accounts + IFSC, last year's ITR (if any) |
 | Salaried | Form 16 (Part A + B) from EVERY employer in the FY; final payslip if Form 16 unclear on components |
 | Reconciliation trio | **AIS** (JSON preferred over PDF — parseable), **TIS**, **Form 26AS** — all from incometax.gov.in |
 | Shares/MF | Broker **Tax P&L** statement (Zerodha Console → Reports → Tax P&L; equivalents: Groww/Upstox tax reports; CAMS/KFintech consolidated CG statement for MF) |

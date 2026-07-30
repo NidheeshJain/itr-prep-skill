@@ -32,6 +32,18 @@ Any VDA transfer bars ITR-1/4.
   tradewise/scripwise sheet.
 - ITR requires scripwise reporting for 112A (ISIN, name, cost, sale) — the broker Tax P&L has it.
 
+## Property LTCG exemptions (Sec 54 family) — verify current rules before relying
+
+- **54**: LTCG on a residential house, reinvested in another house (buy within 2 yrs / construct
+  within 3 yrs; purchases up to 1 yr before sale count). **54F**: LT gain on any non-house asset,
+  invest the full consideration in one house (proportionate exemption otherwise; barred if holding
+  more than one other house). **54EC**: gains into notified bonds within 6 months, ₹50L cap, 5-yr lock-in.
+- 54 and 54F exemptions are capped (₹10 Cr of reinvestment since 2023 — verify) — only bites on
+  large gains, but check before promising full exemption.
+- Not reinvested by the return due date? Park the amount in a **Capital Gains Account Scheme (CGAS)**
+  deposit before filing to preserve the claim — a routinely missed deadline.
+- These claims need detail rows in ITR-2/3 (dates, amounts, CGAS refs) — collect the documents up front.
+
 ## Set-off inside CG (before anything leaves the schedule)
 
 - STCL sets off against any CG (ST or LT). LTCL sets off ONLY against LTCG.

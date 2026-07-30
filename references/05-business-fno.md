@@ -24,6 +24,10 @@ turnover is in thousands.
 - **44AD trap**: if the user opted for presumptive 44AD in any of the past 5 years and now declares
   profit below the presumptive rate (or a loss) while income exceeds the basic exemption → audit
   required regardless of turnover [44AD(4)+(5)]. Ask about prior-year presumptive filings explicitly.
+- **Before applying any audit threshold, state the figure being tested and its source** (e.g. "F&O
+  turnover ₹4,37,250 from Tax P&L 'F&O' sheet — ICAI method"). Audit thresholds test TURNOVER, never
+  total income; and ICAI turnover is not contract value — grabbing traded value off a ledger wrongly
+  trips the ₹1/10 Cr gates.
 - Audit ⇒ CA required, different due date (usually 31 Oct), Form 3CD. Out of scope for self-filing —
   hand off to a CA and say so plainly.
 

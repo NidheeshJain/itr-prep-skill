@@ -13,6 +13,8 @@
 5. **Cess 4%** on tax + surcharge.
 6. Less: **TDS + TCS + advance tax + self-assessment already paid** (from 26AS).
 7. Result: balance payable → interest below; refund → 244A interest will arrive next year (taxable then).
+8. Round total income to the nearest ₹10 (Sec 288A) and the final tax payable/refund likewise
+   (Sec 288B) — this is why a filed return may differ from your computation by a few rupees.
 
 ## Interest (compute, don't estimate)
 

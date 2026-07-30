@@ -65,6 +65,8 @@ The portal's JSON is `{"ITR": {"ITR3": {...schedules...}}}` (or ITR1/2/4). Sched
 `ScheduleS`, `ScheduleHP`, `ScheduleCGFor23` + `ScheduleSI` (special incomes), `ITR3ScheduleBP`,
 `PARTA_PL`/`TradingAccount`/`PARTA_BS`, `ScheduleOS`, `ScheduleCYLA/BFLA/CFL`, `ScheduleVIA`,
 `ScheduleFA/FSI/TR`, `ScheduleTDS1/TDS2/TCS/IT`, `PartB-TI`, `PartB_TTI`, `Verification`.
+Schedule/field names drift across AYs — treat this list as the AY 2026-27 shape and re-derive the
+actual names from the JSON in hand.
 
 Verification procedure:
 1. Parse and extract every material leaf: salary per TAN, exemptions, each OS line, CG rows, BP totals,

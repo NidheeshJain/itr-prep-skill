@@ -12,8 +12,8 @@ and field reports**, and the bar is accuracy, not style.
    `references/10`), changed limits/rates flagged in the references, new portal validation quirks.
 3. **Corrections with citations.** Tax content fixes must cite an official source (incometaxindia.gov.in
    Act/circular, or the e-filing portal). Secondary sources (ClearTax etc.) alone don't clear the bar.
-4. **Depth in thin areas.** Currently thinnest: 44AE transporters, HUF/representative filings,
-   property capital gains (54/54F exemptions), NR/RNOR returns.
+4. **Depth in thin areas.** Currently thinnest: HUF/representative filings, NR/RNOR returns,
+   post-filing notice handling beyond 143(1)/139(9)/154.
 
 ## Ground rules
 

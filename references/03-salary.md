@@ -51,6 +51,9 @@ If the user wants to claim the full amount received: refuse and explain (see SKI
 - Professional tax 16(iii): old regime only.
 - Entertainment allowance: govt employees, old regime only.
 
+Pension from a former employer is taxed under SALARY (standard deduction applies); family pension
+received by survivors is Other Sources — reference 06.
+
 ## Common perquisite/pay items and where they go
 
 | Item | Treatment |

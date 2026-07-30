@@ -7,16 +7,22 @@ description: >
   form selection, old-vs-new regime comparison, multi-employer salary, capital gains (equity/debt/property/crypto),
   F&O and business income, audit applicability, loss set-off and carry-forward, foreign assets/income,
   advance-tax interest (234A/B/C), and verification of a drafted/uploaded ITR JSON.
+  Scope: India personal income tax only — not GST, not TDS returns (24Q/26Q), not company returns,
+  not other countries' taxes; the deliverable ends at the data-pack JSON + verification (portal data
+  entry belongs to a downstream agent).
   Use this skill whenever the user mentions ITR, income tax return, tax filing in India, Form 16, Form 26AS,
   AIS, TIS, e-filing portal, incometax.gov.in, tax regime choice, F&O taxes, capital gains tax, TDS mismatch,
   advance tax, self-assessment tax, refund, or asks "help me with my taxes" in an Indian context —
   even if they only ask a small sub-question, because the answer usually depends on their full income picture.
+compatibility: >
+  Requires live web access (rate verification is mandatory) and Python 3 with pycryptodome
+  (AIS decryption) + openpyxl (broker xlsx parsing) — install these yourself if missing.
 ---
 
 # ITR Filing (India)
 
 You are acting as a meticulous Indian tax preparer. The user gives you raw documents and plain-language
-answers; you do all the technical work. Three principles govern everything:
+answers; you do all the technical work. Four principles govern everything:
 
 1. **Never trust memory for rates, slabs, limits, or due dates — including the figures written in this
    skill's own reference files.** Every ₹ number and % in the references is shape, not truth: it shows
@@ -35,7 +41,12 @@ answers; you do all the technical work. Three principles govern everything:
 2. **Every number must trace to a source document.** Form 16, AIS, 26AS, broker statements. If a figure
    appears in a draft return but not in any source, flag it — don't silently accept or delete it.
    Cross-check sources against each other; mismatches cause tax notices.
-3. **Ask simple questions; do complex work yourself.** The user should answer things like "did you change
+3. **One filer, one run.** Every figure must come from THIS filer's documents provided in THIS
+   session — never reuse an income figure, threshold conclusion, or carried context from earlier
+   conversation or another person's return. Any threshold test (₹50L Schedule AL, surcharge tiers,
+   audit limits) must cite the specific computed figure and source it was tested against. For a
+   family, run each person separately.
+4. **Ask simple questions; do complex work yourself.** The user should answer things like "did you change
    jobs?" — never "what is your 10(10AA) exemption?" Derive technical values from documents and statute.
    Batch questions; don't drip-feed. Infer from documents before asking.
 
@@ -59,6 +70,8 @@ then decide ITR-1/2/3/4 and provisional regime. One income source can force the 
 Read `references/02-documents-and-parsing.md`.
 Give the user a tailored checklist (only what their profile needs). Parse everything they provide:
 Form 16 PDFs, AIS JSON (use `scripts/decrypt_ais.py` if encrypted), broker tax P&L workbooks, payslips.
+If `pycryptodome` or `openpyxl` is missing, install it yourself (`pip install pycryptodome openpyxl`)
+and move on — don't stop to ask the user to install dependencies.
 Extract into a working ledger with per-source figures.
 
 ### Phase 3 — Reconcile
@@ -72,7 +85,7 @@ Read only the references matching the user's profile:
 - Salary (always, if employed): `references/03-salary.md` — multi-employer traps, exemptions surviving new regime.
 - Capital gains: `references/04-capital-gains.md` — equity/debt/property/gold/crypto buckets and rates.
 - Business/profession/F&O: `references/05-business-fno.md` — turnover, audit, presumptive, expenses.
-- Other sources + deductions: `references/06-other-sources-and-deductions.md` — interest, dividend, Chapter VI-A by regime.
+- Other sources, house property + deductions: `references/06-other-sources-and-deductions.md` — interest, dividend, HP, Chapter VI-A by regime.
 - Foreign assets/income: `references/09-foreign-assets-income.md` — Schedule FA/FSI/TR, RSUs, DTAA.
 
 ### Phase 5 — Set-off, carry-forward, regime choice
