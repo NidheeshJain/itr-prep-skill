@@ -42,7 +42,9 @@ Don't worry about completeness — Claude tells you what's missing.
 cd ~/Desktop/ITR
 claude --dangerously-skip-permissions
 ```
-(The flag skips per-action approval prompts for a smoother run — see "Running" below for the trade-off.)
+(The flag skips per-action approval prompts for a smoother run. It disables all permission prompts
+session-wide — this skill only reads your documents, verifies rates online, and writes the data pack
+locally — but skip the flag if you prefer approving each step; everything still works.)
 
 **4. Install this skill by just asking.** Type into Claude:
 > Install the skill from https://github.com/NidheeshJain/itr-prep-skill into my Claude skills folder, then prepare my income tax return from the documents in this folder.
@@ -53,47 +55,14 @@ traced to your documents, with anything unresolved flagged for you.
 
 **5. Pay and file.** Claude will tell you if tax is still payable (pay it on the portal when told,
 before filing). Then either fill the portal yourself using the data pack as your cheat-sheet, or hand
-it to a browser agent ("Handing off" below). **You** always do the final Submit, payment, and e-verify.
-
-## Install
-
-```bash
-git clone https://github.com/NidheeshJain/itr-prep-skill.git ~/.claude/skills/itr-prep-skill
-pip install pycryptodome openpyxl   # AIS JSON decryption + broker xlsx parsing
-```
-
-For the downstream filling step, install the Claude Chrome extension (see "Handing off" below).
-
-## Running
-
-Start Claude Code in the folder containing your documents and ask it to prepare your ITR. For the
-smoothest run, launch with:
-
-```bash
-claude --dangerously-skip-permissions
-```
-
-so document parsing, dependency installs, and rate-verification web lookups don't pause for approval
-at every step. The skill only reads your documents, verifies rates online, and writes the data pack
-locally — but the flag disables all permission prompts session-wide, so skip it if you prefer to
-approve each action (everything still works, just with more prompts).
-
-## Layout
-
-- `SKILL.md` — 8-phase workflow orchestrator
-- `references/01–10` — per-domain depth, loaded lazily by profile
-- `scripts/decrypt_ais.py` — decrypts the portal's encrypted AIS JSON (PAN + DOB)
-
-## Disclaimer
-
-This is a careful preparer, not a chartered accountant. Users remain legally responsible for filed
-figures. Audit cases, HUF/deceased filings, and contested notices are explicitly escalated to a CA.
+it to a browser agent ("Handing off" below). **You** always do the payment, the final Submit, and e-verify.
 
 ## Handing off to the filling agent
 
-The data pack is designed to be consumed by a second agent with browser access (e.g. Claude in Chrome
-or a cowork session). Install Claude chrome extension. Attach the data-pack JSON (and optionally the 
-raw documents for spot-checks) with a prompt like:
+The data pack is designed to be consumed by a second agent with browser access — e.g. Claude in
+Chrome (install the [Claude Chrome extension](https://claude.ai/chrome)) or a cowork session. Attach the data-pack JSON (and
+optionally the raw documents for spot-checks). A prep run ends by showing you this prompt pre-filled
+for your case — just copy-paste it; the generic version:
 
 ```text
 I need you to fill my Indian Income Tax Return on https://eportal.incometax.gov.in using the attached
@@ -115,10 +84,31 @@ Rules:
 6. For Schedule 112A, don't type rows manually: use the portal's "Download CSV Template" and fill it
    from the pack's `csv_ready_112A` block (follow `csv_generation_notes`). If any field is missing or
    you need to reconcile a figure at runtime, use the attached broker tax report.
+7. Once everything is filled and the portal validates with 0 errors, download the portal's JSON so I
+   can take it back to my prep agent for a final line-by-line reconciliation and sign-off before I
+   pay and submit.
 ```
+
+The prep agent stays with you to the end: bring the portal JSON back to it for the final
+reconciliation, and if validation errors come up, either let the filling agent fix them or send the
+prep agent a screenshot — it will fix the pack or tell the filling agent exactly what to do.
 
 If anything in the pack looks wrong mid-fill, the filling agent should stop and flag it — the pack
 carries source attribution for every figure so discrepancies can be traced.
+
+## Layout
+
+- `SKILL.md` — 8-phase workflow orchestrator
+- `references/01–10` — per-domain depth, loaded lazily by profile
+- `scripts/decrypt_ais.py` — decrypts the portal's encrypted AIS JSON (PAN + DOB)
+
+Manual install: `git clone https://github.com/NidheeshJain/itr-prep-skill.git ~/.claude/skills/itr-prep-skill`
+(Python deps self-install on first run.)
+
+## Disclaimer
+
+This is a careful preparer, not a chartered accountant. Users remain legally responsible for filed
+figures. Audit cases, HUF/deceased filings, and contested notices are explicitly escalated to a CA.
 
 ## Contributing
 

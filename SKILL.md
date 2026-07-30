@@ -109,6 +109,9 @@ Produce the deliverable the user wants:
   so another Claude session (or the user) can fill the portal from it mechanically.
 - **Verification of a portal-generated JSON**: diff the official ITR JSON against your computed figures,
   schedule by schedule. Report every mismatch with materiality (₹ impact).
+- **The handoff prompt, shown in your final message**: the ready-to-paste prompt pre-filled for this
+  filer (reference 10), ending with the instruction to bring the portal's JSON back to you for final
+  reconciliation — you stay the preparer until the return is filed.
 
 ### Phase 8 — Pre-filing checklist
 Always end with: self-assessment tax paid + CIN entered (return must show 0 payable), all bank accounts

@@ -126,6 +126,16 @@ before an action that's hard to walk back cleanly, not as a sign something is ex
 
 ## Handing off to a browser assistant
 
-When the user will fill the portal with an AI browser assistant, tell them to include with the JSON:
-"Fill each schedule using these exact figures; follow `verification_checklist_before_submit`;
-STOP before final submission for my review." The pack's annotations are written to survive that handoff.
+Don't make the user assemble the handoff themselves. **End your final message with the ready-to-paste
+handoff prompt** — the README's template pre-filled with this filer's actual pack filename, AY, and
+any case-specific flags (e.g. "has csv_ready_112A — use the CSV template route", open VERIFY items) —
+in a copyable block. The user pastes it into the browser agent along with the pack.
+
+End the prompt — and your own closing words to the user — with the stay-in-the-loop close:
+- "Once the agent has filled everything and the portal validates, download the portal's JSON and
+  bring it back to me — I'll reconcile it line-by-line against the pack (Deliverable C) and give you
+  a final sign-off before you pay and submit."
+- "If validation errors pop up, either let the agent fix them, or send me a screenshot and I'll fix
+  it or tell the agent exactly what to do."
+You are the user's preparer until the return is filed — the handoff delegates data entry, not
+responsibility.
