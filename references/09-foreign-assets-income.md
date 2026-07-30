@@ -20,30 +20,11 @@ Per row: country, entity name+address, dates, **peak value**, closing value, inc
 prescribed conversion (SBI TT buying rate; verify current rule). Get these from the broker's annual
 statement. Unvested RSUs are NOT reportable; vested-but-unsold ARE.
 
-## Foreign income (Schedule FSI) + DTAA relief (Schedule TR + Form 67)
+### Employer RSU/ESPP specifics
 
-- Foreign dividends (e.g., on US stock): taxable at slab in India; US withholds 25% under treaty.
-- Foreign CG on sale: normal Indian CG rules (unlisted-foreign-share holding periods apply).
-- Claim foreign tax credit: report country-wise in FSI, treaty article in TR, and **file Form 67
-  before/with the return** — FTC is routinely denied without it. Credit = lower of foreign tax paid
-  and Indian tax on that income.
-- US RSU double-tax confusion: the vest was taxed as salary in India (17(2) perquisite); on sale only
-  the gain ABOVE the vest-date FMV is Indian CG. Cost basis = FMV at vest, not zero.
-
-### FSI column (d) — "tax payable on such income under normal provisions in India"
-
-Not auto-populated from Form 67 — you compute it, and the identical figure must be entered
-independently in both Schedule FSI and Form 67 (they aren't linked electronically; a mismatch between
-them can delay or reject the FTC claim).
-
-- Formula (Sec 2(10) "average rate of tax", applied per Rule 128): `average rate = total tax liability
-  (incl. surcharge + cess, computed before FTC relief) ÷ total income (Part B-TI)`; column (d) =
-  average rate × foreign-source income included in total income.
-- Column (e) relief = lower of (c) tax paid abroad and (d) — usually (c), since (d) often comes out
-  higher than the foreign withholding.
-- Cross-check the FTC amount against any withholding certificate the payer/broker issues (e.g. a US
-  1042-S) if one is available — a mismatch flags either a wrong conversion-rate lookup or an
-  incomplete foreign-income figure, not just a rounding difference.
+The three subsections below come from US-broker RSU/ESPP filings — the most common foreign-asset
+case. For other foreign assets (property, foreign bank accounts, non-US holdings) apply the same
+principles: verify, present the choice to the user, document it in the data pack.
 
 ### Table A3 — one row per tranche, or one aggregated row per company?
 
@@ -70,9 +51,34 @@ investor-relations page, and note the source, same as any other verified fact.
 ### Custodial account vs. direct holding (A2 vs. A3) for employer RSU/ESPP brokerage accounts
 
 An employer-linked equity-award brokerage blurs the A2 (custodial account)/A3 (direct equity holding)
-line. Common practice: report the underlying shares under A3 with the issuing company as the entity,
+line. One defensible approach (verify current portal guidance): report the underlying shares under A3 with the issuing company as the entity,
 and don't also duplicate the same value under A2 as a separate custodial account — verify current
 portal guidance if unsure, and record whichever choice was made.
+
+## Foreign income (Schedule FSI) + DTAA relief (Schedule TR + Form 67)
+
+- Foreign dividends (e.g., on US stock): taxable at slab in India; US withholds 25% under treaty.
+- Foreign CG on sale: normal Indian CG rules (unlisted-foreign-share holding periods apply).
+- Claim foreign tax credit: report country-wise in FSI, treaty article in TR, and **file Form 67
+  before/with the return** — FTC is routinely denied without it. Credit = lower of foreign tax paid
+  and Indian tax on that income.
+- US RSU double-tax confusion: the vest was taxed as salary in India (17(2) perquisite); on sale only
+  the gain ABOVE the vest-date FMV is Indian CG. Cost basis = FMV at vest, not zero.
+
+### FSI column (d) — "tax payable on such income under normal provisions in India"
+
+Not auto-populated from Form 67 — you compute it, and the identical figure must be entered
+independently in both Schedule FSI and Form 67 (they aren't linked electronically; a mismatch between
+them can delay or reject the FTC claim).
+
+- Formula (Sec 2(10) "average rate of tax", applied per Rule 128): `average rate = total tax liability
+  (incl. surcharge + cess, computed before FTC relief) ÷ total income (Part B-TI)`; column (d) =
+  average rate × foreign-source income included in total income.
+- Column (e) relief = lower of (c) tax paid abroad and (d) — usually (c), since (d) often comes out
+  higher than the foreign withholding.
+- Cross-check the FTC amount against any withholding certificate the payer/broker issues (e.g. a US
+  1042-S) if one is available — a mismatch flags either a wrong conversion-rate lookup or an
+  incomplete foreign-income figure, not just a rounding difference.
 
 ## Practical workflow
 

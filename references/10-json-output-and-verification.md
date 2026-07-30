@@ -31,7 +31,8 @@ Required top-level sections (include only those relevant to the profile, but nev
   "business_fno": { "classification, turnover, audit determination + reasoning, gross P&L,
                      itemized expenses, net, nature-of-business code" },
   "other_sources": { "interest per account, dividend (quarterwise), refund interest 244A, family pension…" },
-  "foreign": { "schedule FA rows, FSI, FTC + Form 67 status" },
+  "foreign": { "schedule FA rows, FSI, FTC computation working + Form 67 status, documented_choices
+               (A3 per-tranche vs aggregated, A2-vs-A3 classification, conversion rates used)" },
   "brought_forward_losses": { "per-AY vintage from prior ITR's ScheduleCFL/ScheduleUD: type, opening
                                amount, absorbed this year, closing, expiry AY; source: filed JSON or
                                143(1) intimation" },
@@ -91,11 +92,12 @@ schedule entry, an unclaimed credit, a relief pending a prerequisite filing) rat
 the whole return from zero. Confirm the components sum to (approximately) the observed gap before
 presenting the explanation — that sum check is what turns a guess into a verified finding.
 
-## Deliverable C — final pre-submission diff against the portal's own generated JSON (required)
+## Deliverable C — final pre-submission diff against the portal's own generated JSON (strongly recommended)
 
 After the user has entered everything on the portal and it validates cleanly (no schedule errors),
-most portal/utility flows generate a JSON at that point, before final submission. **Ask for this file
-as a standard closing step, every time — don't wait to be asked.** It is the only artifact that
+most portal/utility flows generate a JSON at that point, before final submission. **Offer this proactively as the
+standard closing step — don't wait to be asked.** It is not a completion gate: if the user takes the
+data pack and files independently, put the recommendation in the pre-filing checklist and close cleanly. It is the only artifact that
 reflects exactly what the department will actually receive, including anything the portal itself
 silently defaulted or omitted (a credit schedule left empty despite the underlying figure existing in
 AIS/26AS; a relief not yet reflected pending a prerequisite filing like Form 67).
