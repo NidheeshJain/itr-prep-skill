@@ -30,6 +30,15 @@ Structure: `partB.sections[]` → each section has `elements[]` → each element
 Amounts are comma-formatted strings; dates are DD/MM/YYYY. Extract per-source, don't just take totals —
 per-TAN salary rows are how you detect multiple employers the user forgot to mention.
 
+**If the user brings the AIS PDF instead of JSON**: it's usually password-locked — same convention,
+PAN + DOB in ddmmyyyy (try PAN lowercase, then uppercase). Unlock it yourself (self-install `pikepdf`):
+`python3 -c "import pikepdf; pikepdf.open('AIS.pdf', password='<pan><ddmmyyyy>').save('AIS_unlocked.pdf')"`
+then read the PDF normally. Caveat: PDF table extraction is lossier than the JSON's structured rows —
+cross-check every total twice as carefully, and per-TAN employer detection is weaker. Still prefer the
+JSON: tell the user it's the adjacent download option on the same AIS screen. Other tax PDFs use
+similar-but-not-identical conventions — 26AS from TRACES: usually just DOB (ddmmyyyy); Form 16: varies
+by employer, often PAN-lowercase+DOB — try the obvious PAN/DOB combinations before asking the user.
+
 Sections to mine: **B1 TDS/TCS** (salary + non-salary TDS), **B2 SFT** (interest, dividend, securities
 trades, large deposits/"miscellaneous payment" — the latter are usually NOT income), **B3 taxes paid**,
 **B4 demand/refund**, **Other information** (per-employer gross salary with employment dates — gives the

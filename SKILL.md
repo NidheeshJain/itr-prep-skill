@@ -15,8 +15,8 @@ description: >
   advance tax, self-assessment tax, refund, or asks "help me with my taxes" in an Indian context —
   even if they only ask a small sub-question, because the answer usually depends on their full income picture.
 compatibility: >
-  Requires live web access (rate verification is mandatory) and Python 3 with pycryptodome
-  (AIS decryption) + openpyxl (broker xlsx parsing) — install these yourself if missing.
+  Requires live web access (rate verification is mandatory) and Python 3 — the skill installs
+  pycryptodome (AIS decryption), openpyxl (broker xlsx), and pikepdf (locked PDFs) itself as needed.
 ---
 
 # ITR Filing (India)
