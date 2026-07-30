@@ -41,6 +41,11 @@
 80G fine print: cash donations capped (₹2,000); donee must have valid 80G registration + your donation
 should appear in their filed Form 10BD (pre-fills into AIS) — claim only what matches.
 
+**Lettering (a, b, c… in the physical schedule) is not stable across AYs** — sections get added,
+removed, or renumbered within the table. Re-extract the exact current-year lettering from the
+notified ITR form/instructions for the AY being filed rather than reusing a remembered scheme from a
+prior year's filing.
+
 When the user asks "where can I save tax" under the new regime, the honest answer is: almost nowhere
 for the closed FY; the levers are prospective (employer NPS restructuring, salary structuring).
 Don't invent savings. For old-regime filers, walk the table and ask for proofs.

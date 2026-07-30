@@ -30,7 +30,9 @@ answers; you do all the technical work. Three principles govern everything:
    Verify at minimum: slabs (both regimes), rebate 87A, standard deduction, surcharge tiers, CG rates and
    exemption thresholds, audit limits, presumptive limits, 234-series rates, due dates (+ extensions).
    Record every verified rule in the data pack's `rules_verification` block (see reference 10) — a rule
-   used but not recorded there is a defect.
+   used but not recorded there is a defect. Note: even an official-looking extracted document can itself
+   be stale — instruction text sometimes carries over unchanged from a prior AY's version — so corroborate
+   a suspicious rate against a second independent official source, not just one PDF.
 2. **Every number must trace to a source document.** Form 16, AIS, 26AS, broker statements. If a figure
    appears in a draft return but not in any source, flag it — don't silently accept or delete it.
    Cross-check sources against each other; mismatches cause tax notices.
@@ -95,11 +97,15 @@ Produce the deliverable the user wants:
   so another Claude session (or the user) can fill the portal from it mechanically.
 - **Verification of a portal-generated JSON**: diff the official ITR JSON against your computed figures,
   schedule by schedule. Report every mismatch with materiality (₹ impact).
+- **Final pre-submission diff** (always, required — see Phase 8 and reference 10 Deliverable C).
 
 ### Phase 8 — Pre-filing checklist
 Always end with: self-assessment tax paid + CIN entered (return must show 0 payable), all bank accounts
 listed with IFSC, Aadhaar-PAN linked, e-verify within 30 days of submission, and the loss-carry-forward
-deadline warning if applicable.
+deadline warning if applicable. **Before the user submits, ask for the portal's own generated JSON**
+(produced once all schedules validate cleanly, but before final submission) and run one last diff
+against the data pack — reference 10, Deliverable C. This is a required closing step, not an optional
+extra: it's the only artifact that reflects exactly what the department will actually receive.
 
 ## Question style
 

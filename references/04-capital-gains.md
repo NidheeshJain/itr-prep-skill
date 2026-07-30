@@ -39,6 +39,15 @@ Any VDA transfer bars ITR-1/4.
 - Exempt-threshold interaction: the 112A annual exemption applies AFTER loss set-off.
 - Net loss → Schedule CFL, 8-year carry-forward, **only if filed by due date**.
 
+## Stale rates can hide inside otherwise-official documents
+
+A rate or threshold pulled from an extracted form PDF is not automatically current just because the
+PDF looks official — instruction paragraphs and boilerplate sometimes carry over unchanged from a
+prior AY's version even in an otherwise-current document (112A's rate/exemption has been a repeat
+source of this confusion). Corroborate a suspicious-looking rate — especially one that matches what
+you'd expect from last year — against a second, independent official source (e.g. the AY's
+validation-rules document, not just the form text) before using it in a computation.
+
 ## AIS cross-check
 
 AIS SFT section lists each securities sale with consideration and cost. Match scrip-level against the
