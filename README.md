@@ -18,6 +18,43 @@ Rates/limits in the reference files are treated as *shape, not truth* — the sk
 every rate against official sources (incometaxindia.gov.in / incometax.gov.in) per assessment year and
 recording them in a `rules_verification` block in the output.
 
+## Quickstart — for non-technical users (clean machine, end to end)
+
+No coding needed. You'll copy-paste a few commands into the terminal and then just talk to Claude.
+
+**1. Install Claude Code** (needs a Claude subscription — sign in when it asks):
+- **Mac**: open the **Terminal** app (Cmd+Space, type "Terminal"), paste and press Enter:
+  ```bash
+  curl -fsSL https://claude.ai/install.sh | bash
+  ```
+- **Windows**: open **PowerShell** (Start menu, type "PowerShell"), paste and press Enter:
+  ```powershell
+  irm https://claude.ai/install.ps1 | iex
+  ```
+
+**2. Make a folder for your tax documents** (e.g. `ITR` on your Desktop) and drop everything in:
+Form 16 from every employer this year, AIS (JSON preferred) + Form 26AS from incometax.gov.in,
+broker Tax P&L (Zerodha Console → Reports → Tax P&L), last year's ITR if you have it.
+Don't worry about completeness — Claude tells you what's missing.
+
+**3. Start Claude in that folder.** In the same terminal:
+```bash
+cd ~/Desktop/ITR
+claude --dangerously-skip-permissions
+```
+(The flag skips per-action approval prompts for a smoother run — see "Running" below for the trade-off.)
+
+**4. Install this skill by just asking.** Type into Claude:
+> Install the skill from https://github.com/NidheeshJain/itr-prep-skill into my Claude skills folder, then prepare my income tax return from the documents in this folder.
+
+Claude fetches the skill, reads your documents, asks you simple questions (job changes? sold shares?),
+verifies current tax rules online, and produces `ITR_datapack_<PAN>_AY<year>.json` — every number
+traced to your documents, with anything unresolved flagged for you.
+
+**5. Pay and file.** Claude will tell you if tax is still payable (pay it on the portal when told,
+before filing). Then either fill the portal yourself using the data pack as your cheat-sheet, or hand
+it to a browser agent ("Handing off" below). **You** always do the final Submit, payment, and e-verify.
+
 ## Install
 
 ```bash
